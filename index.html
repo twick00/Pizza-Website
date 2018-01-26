@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="css/styles.css" rel="stylesheet" type="text/css">
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/scripts.js"></script>
+    <title>Document</title>
+
+</head>
+
+<body>
+    <div class="container-fluid background">
+        <div class="row">
+            <div class="col">
+                <div class="jumbotron">
+                    <h2>Hello!</h2>
+                    <br>
+                    <h3>Welcome to the Pizza Factory.</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col centered">
+                <p>
+                    <button class="btn btn-primary" id="dumb-video-button" type="button" data-toggle="collapse" data-target="#collapseEmbeded"
+                        aria-expanded="false" aria-controls="collapseEmbeded">
+                        Gimme Pizza!
+                    </button>
+                </p>
+                <div class="collapse" id="collapseEmbeded">
+                    <div class="card card-block">
+                        <div id="player" class="embed-responsive embed-responsive-16by9">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid">
+                <div class="col">
+                    <div class="col-6-md">
+                        <br>
+                        <div class="card card-inverse" style="background-color: #c3c2c2b7; border-color: #000000a2;">
+                            <div class="card-block">
+                                <h3 class="card-title" style="text-align: center;">
+                                    Build A Pizza!
+                                </h3>
+                                <h6 class="card-subtitle" style="text-align: center;">Click on the buttons to add those to the pizza.
+                                    <br> When done with click next.
+                                </h6>
+                                <button class="btn btn-primary" id="start-order" type="button" aria-expanded="false" aria-controls="collapseEmbeded">
+                                    Start an Order:
+                                </button>
+                                <div class="row">
+                                    <div class="col-8-md mx-auto" id="button-bar">
+                                    <!-- Ingredient Buttons start here -->
+
+
+                                    <!-- Ingredient Buttons end here -->
+                                    </div>
+                                </div>
+                                <button class="btn btn-primary" id="back-button" type="button" aria-expanded="false" aria-controls="collapseEmbeded">
+                                    Back
+                                </button>
+                                <button class="btn btn-primary" id="next-button" type="button" aria-expanded="false" aria-controls="collapseEmbeded">
+                                    Next
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</body>
+
+</html>

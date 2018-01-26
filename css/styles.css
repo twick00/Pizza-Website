@@ -1,0 +1,42 @@
+html {
+    height: 100%;
+}
+
+body {
+    background-image: url("../img/image410791.jpg");
+    background-repeat: no-repeat;
+    height: 100%;
+    color: rgb(0, 0, 0)
+}
+
+.jumbotron {
+    text-align: center;
+    background-color: #e9ecefb7;
+    border-color: #000000a2;
+}
+
+.centered {
+    text-align: center;
+}
+
+.row {
+    padding: 30px;
+}
+
+
+
+.toppings {
+    display: none;
+}
+.crusts {
+    display: none;
+}
+.cheese {
+    display: none;
+}
+#next-button {
+    display: none;
+}
+#back-button {
+    display: none;
+}
