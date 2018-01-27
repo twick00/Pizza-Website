@@ -41,8 +41,8 @@
                 </div>
             </div>
             <div class="container-fluid">
-                <div class="col">
-                    <div class="col-6-md">
+                <div class="row input">
+                    <div class="col">
                         <br>
                         <div class="card card-inverse" style="background-color: #c3c2c2b7; border-color: #000000a2;">
                             <div class="card-block">
@@ -55,12 +55,15 @@
                                 <button class="btn btn-primary" id="start-order" type="button" aria-expanded="false" aria-controls="collapseEmbeded">
                                     Start an Order:
                                 </button>
-                                <div class="row">
+                                <button class="btn btn-primary float-right" id="order-button" type="button" aria-expanded="false" aria-controls="collapseEmbeded">
+                                        Order
+                                    </button>
+                                <div class="row button-row">
                                     <div class="col-8-md mx-auto" id="button-bar">
-                                    <!-- Ingredient Buttons start here -->
+                                        <!-- Ingredient Buttons start here -->
 
 
-                                    <!-- Ingredient Buttons end here -->
+                                        <!-- Ingredient Buttons end here -->
                                     </div>
                                 </div>
                                 <button class="btn btn-primary" id="back-button" type="button" aria-expanded="false" aria-controls="collapseEmbeded">
@@ -69,12 +72,30 @@
                                 <button class="btn btn-primary" id="next-button" type="button" aria-expanded="false" aria-controls="collapseEmbeded">
                                     Next
                                 </button>
+                                <button class="btn btn-primary" id="done-button" type="button" aria-expanded="false" aria-controls="collapseEmbeded">
+                                    Done
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row output">
+                    <div class="col">
+                        <!-- <div class="col-10-md"> -->
+                        <div class="card card-inverse" style="background-color: #c3c2c2b7; border-color: #000000a2;">
+                            <div class="card-block">
+                                <h3 class="card-title" style="text-align: center;">
+                                    Here's your order:
+                                </h3>
+                                <div class="card-subtitle" style="text-align: center;">
+                                    <div class="col pizza-output"></div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
     </div>
     </div>
 </body>

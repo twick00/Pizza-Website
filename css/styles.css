@@ -24,7 +24,9 @@ body {
 }
 
 
-
+.output {
+    display: none;
+}
 .toppings {
     display: none;
 }
@@ -39,4 +41,22 @@ body {
 }
 #back-button {
     display: none;
+}
+#done-button {
+    display: none;
+}
+.button-row {
+    display: none;
+}
+#button-bar .btn {
+    padding-left: 2px;
+    padding-right: 2px;
+    margin-left: 2px;
+    margin-right: 2px;
+}
+#order-button {
+    display: none;
+}
+p {
+    margin-bottom: 0px;
 }
