@@ -3,7 +3,13 @@ function Pizza(size, crust, cheese, toppings) {
     this.crust = crust;
     this.cheese = cheese;
     this.toppings = toppings;
+    this.cost = function () {
+        return ((this.toppings.length * 1) + 7);
+    };
 }
+Pizza.prototype.cost = function() {
+    return ((this.toppings.length * 1) + 7);
+};
 var player;
 
 function onYouTubeIframeAPIReady() {
@@ -44,16 +50,15 @@ function main() {
     $("#start-order").click(function (event) {
         order.push(startAnOrder());
     });
-    $("#done-button").click(function (event) { 
-        
+    $("#done-button").click(function (event) {
+
         pizzaArr.push(donePizza());
         console.log(pizzaArr);
     });
     $("#order-button").click(function (event) {
         if (pizzaArr[0] !== undefined) {
             placeOrder(pizzaArr);
-        }
-        else {
+        } else {
             alert("Oops, looks like we misplaced your order.");
         }
     });
@@ -61,46 +66,43 @@ function main() {
 
 function buildButtons() {
     for (var i = 0; i < pizzaIngreds.toppings.length; i++) {
-        $("#button-bar").append("<label class='btn btn-primary toppings active' ><input type='checkbox' class='toppings' name='"+pizzaIngreds.toppings[i]+"' autocomplete='off'>" + pizzaIngreds.toppings[i] + "</label>");
+        $("#button-bar").append("<label class='btn btn-primary toppings active' ><input type='checkbox' class='toppings' name='" + pizzaIngreds.toppings[i] + "' autocomplete='off'>" + pizzaIngreds.toppings[i] + "</label>");
     }
     for (var i = 0; i < pizzaIngreds.crusts.length; i++) {
-        $("#button-bar").append("<label class='btn btn-primary crusts active'><input type='checkbox' class='crusts' name='"+pizzaIngreds.crusts[i]+"'autocomplete='off'>" + pizzaIngreds.crusts[i] + "</label>");
+        $("#button-bar").append("<label class='btn btn-primary crusts active'><input type='checkbox' class='crusts' name='" + pizzaIngreds.crusts[i] + "'autocomplete='off'>" + pizzaIngreds.crusts[i] + "</label>");
     }
     for (var i = 0; i < pizzaIngreds.cheese.length; i++) {
-        $("#button-bar").append("<label class='btn btn-primary cheese active'><input type='checkbox' class='cheese' name='"+pizzaIngreds.cheese[i]+"'autocomplete='off'>" + pizzaIngreds.cheese[i] + "</label>");
+        $("#button-bar").append("<label class='btn btn-primary cheese active'><input type='checkbox' class='cheese' name='" + pizzaIngreds.cheese[i] + "'autocomplete='off'>" + pizzaIngreds.cheese[i] + "</label>");
     }
 }
+
 function placeOrder(pizzaArr) {
     console.log(pizzaArr);
-    for(var i = 0; i < pizzaArr.length; i++) {
-        $(".pizza-output").append('<br><h5>Pizza '+(i+1)+'</h5>');
-        $(".pizza-output").append("<div class='col' id='crusts-output'>");
-        $(".pizza-output").append("<p><strong>Crusts:</strong></p>");
-        $(".pizza-output").append("<ol>");
-        for(var o = 0; o < pizzaArr[i].crust.length; o++){
-            $(".pizza-output").append("<li>"+pizzaArr[i].crust[o]+"</li>");
+    var cost = 0;
+    html = "";
+    for (var i = 0; i < pizzaArr.length; i++) {
+        html +='<br><div class="col-sm-12"><h5>Pizza ' + (i + 1) + '</h5></div>'+"<div class='row'><div class='col-md-auto' id='crusts-output'>"+"<p><strong>Crusts:</strong></p>"+"<ol>";
+        for (var o = 0; o < pizzaArr[i].crust.length; o++) {
+            html += "<li>" + pizzaArr[i].crust[o] + "</li>";
         }
-        //$(".pizza-output").append("</ol>");
-        $(".pizza-output").append("</div");
-        $(".pizza-output").append("<div class='col' id='cheese-output'>");
-        $(".pizza-output").append("<p><strong>Cheese:</strong></p>");
-        $(".pizza-output").append("<ol>");
-        for(var u = 0; u < pizzaArr[i].cheese.length; u++){
-            $(".pizza-output").append("<li>"+pizzaArr[i].cheese[u]+"</li>");
+        html += "</ol></div>"+"<div class='col-md-auto' id='cheese-output'>"+"<p><strong>Cheese:</strong></p>"+"<ol>";
+        for (var u = 0; u < pizzaArr[i].cheese.length; u++) {
+            html+="<li>" + pizzaArr[i].cheese[u] + "</li>";
         }
-        //$(".pizza-output").append("</ol>");
-        $(".pizza-output").append("</div");
-        $(".pizza-output").append("<div class='col' id='topping-output'>");
-        $(".pizza-output").append("<p><strong>Toppings:</strong></p>");
-        $(".pizza-output").append("<ol>");
-        for(var y = 0; y < pizzaArr[i].toppings.length; y++){
-            $(".pizza-output").append("<li>"+pizzaArr[i].toppings[y]+"</li>");
+        html +="</ol></div>"+"<div class='col-md-auto' id='topping-output'>"+"<p><strong>Toppings:</strong></p>"+"<ol>";
+        for (var y = 0; y < pizzaArr[i].toppings.length; y++) {
+            html += "<li>" + pizzaArr[i].toppings[y] + "</li>";
         }
-        //$(".pizza-output").append("</ol>");
-        $(".pizza-output").append("</div");
+        html+="</div></div></div>";
+        if (pizzaArr[i+1] !== undefined) {
+            html +="<hr>";
+        }
+        cost += pizzaArr[i].cost();
     }
     $(".output").show();
     $(".input").hide();
+    $(".pizza-output").append(html+"</ol><br><div class='col-sm-12'><h2><strong>Total cost: "+cost+"$</strong></div>");
+    console.log(html);
 }
 
 var pizzaIngreds = {
@@ -120,25 +122,26 @@ var pizzaIngreds = {
     ],
     cheese: ["Mozzarella", "Cheddar", "Mixed", ]
 };
+
 function donePizza() {
-    var toppings = $('.toppings:checkbox:checked').map(function() {
+    var toppings = $('.toppings:checkbox:checked').map(function () {
         $(this).prop('checked', false);
         return this.name;
     }).get();
-    var crusts = $('.crusts:checkbox:checked').map(function() {
+    var crusts = $('.crusts:checkbox:checked').map(function () {
         $(this).prop('checked', false);
         return this.name;
     }).get();
-    var cheese = $('.cheese:checkbox:checked').map(function() {
+    var cheese = $('.cheese:checkbox:checked').map(function () {
         $(this).prop('checked', false);
         return this.name;
     }).get();
-    if ((toppings[0] === undefined) || (crusts[0] === undefined) || (cheese[0] === undefined)){
+    if ((toppings[0] === undefined) || (crusts[0] === undefined) || (cheese[0] === undefined)) {
         alert("You're missing some ingredients.");
         return;
     }
     //console.log(toppings, crusts, cheese);
-    var pizza = new Pizza("Medium",crusts,cheese,toppings);
+    var pizza = new Pizza("Medium", crusts, cheese, toppings);
     $(".button-row").hide();
     $("#back-button").hide();
     $("#next-button").hide();
@@ -148,9 +151,6 @@ function donePizza() {
     $("#order-button").show();
     return pizza;
 }
-
-
-
 
 function startAnOrder() {
     $(".button-row").show();
